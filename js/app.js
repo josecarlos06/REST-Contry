@@ -4,7 +4,7 @@
    // document ready
    document.addEventListener('DOMContentLoaded', () => {
       darkMode();
-      contriesFecth();
+      contriesFecth('');
    })
 
    form.addEventListener('submit', (e) => {
@@ -31,6 +31,7 @@
       const url = './data.json';
       const res = await fetch(url);
       const data = await res.json();
+      console.log(regions);
       if (regions) {
          const filters = data.filter(region => region.region === regions);
          return interfaceUi(filters);
