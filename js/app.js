@@ -1,17 +1,22 @@
 (function () {
    const form = document.querySelector('.form');
+   const regions = document.querySelector('#region');
    let names;
    // document ready
    document.addEventListener('DOMContentLoaded', () => {
       darkMode();
-      contriesFecth('');
+      contriesFecth();
    })
 
-   form.addEventListener('submit', (e) => {
+   form.addEventListener('submit',(e) => {
       e.preventDefault();
-      const regions = document.querySelector('#region').value;
       names = document.querySelector('#search').value;
-      contriesFecth(regions)
+      contriesFecth();
+      form.reset();
+   })
+   regions.addEventListener('change',(e)=>{
+      names = "";
+      contriesFecth(e.target.value);
    })
    
    const darkMode = () => {
@@ -24,8 +29,8 @@
             ? body.classList.remove('dark')
             : body.classList.add('dark');
          localStorage.setItem('dark', JSON.stringify(body.classList.value))
-      })
-   }
+      });
+   };
 
    const contriesFecth = async (regions = '') => {
       const url = './data.json';
