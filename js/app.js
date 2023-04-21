@@ -17,7 +17,7 @@
    const darkMode = () => {
       const toggleMode = document.querySelector('#toggle-mode');
       const body = document.querySelector('body');
-      const darkLocal = JSON.parse(localStorage.getItem("dark") || '');
+      const darkLocal = JSON.parse(localStorage.getItem("dark")) || '';
       darkLocal && body.classList.add(darkLocal);
       toggleMode.addEventListener('click', () => {
          body.classList.contains('dark')
